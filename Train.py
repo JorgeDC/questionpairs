@@ -18,6 +18,9 @@ from keras import backend as K
 from keras.optimizers import Adadelta
 from keras.callbacks import ModelCheckpoint
 
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+
 TRAIN_CSV = "dutch_data/dutch_formatted_as_csv.csv"
 EMBEDDING_FILE = 'wiki.nl/wiki.nl.vec'
 train_df = pd.read_csv(TRAIN_CSV)
