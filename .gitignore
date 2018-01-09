@@ -109,3 +109,6 @@ venv.bak/
 /wiki.nl
 /data
 /dutch_data
+
+*.h5
+*.hdf5

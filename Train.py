@@ -117,7 +117,7 @@ for word, index in vocabulary.items():
 max_seq_length = max(train_df.question1.map(lambda x: len(x)).max(),train_df.question2.map(lambda x: len(x)).max())
 
 # Split to train validation
-validation_size = 20000
+validation_size = 40000
 training_size = len(train_df) - validation_size
 
 X = train_df[questions_cols]
@@ -144,8 +144,8 @@ assert len(X_train['left']) == len(Y_train)
 # Model variables
 n_hidden = 50
 gradient_clipping_norm = 1.25
-batch_size = 256
-n_epoch = 11
+batch_size = 512
+n_epoch = 50
 
 def exponent_neg_manhattan_distance(left, right):
     ''' Helper function for the similarity estimate of the LSTMs outputs'''
@@ -162,7 +162,7 @@ encoded_left = embedding_layer(left_input)
 encoded_right = embedding_layer(right_input)
 
 # Since this is a siamese network, both sides share the same LSTM
-shared_lstm = LSTM(n_hidden)
+shared_lstm = Bidirectional(LSTM(n_hidden))
 
 left_output = shared_lstm(encoded_left)
 right_output = shared_lstm(encoded_right)
