@@ -145,7 +145,7 @@ assert len(X_train['left']) == len(Y_train)
 n_hidden = 50
 gradient_clipping_norm = 1.25
 batch_size = 256
-n_epoch = 30
+n_epoch = 50
 
 def exponent_neg_manhattan_distance(left, right):
     ''' Helper function for the similarity estimate of the LSTMs outputs'''
