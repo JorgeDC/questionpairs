@@ -141,7 +141,7 @@ assert len(X_train['left']) == len(Y_train)
 # Model variables
 n_hidden = 50
 gradient_clipping_norm = 1.25
-batch_size = 64
+batch_size = 256
 n_epoch = 11
 
 def exponent_neg_manhattan_distance(left, right):
