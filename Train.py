@@ -162,7 +162,7 @@ encoded_left = embedding_layer(left_input)
 encoded_right = embedding_layer(right_input)
 
 # Since this is a siamese network, both sides share the same LSTM
-shared_lstm = LSTM(n_hidden)
+shared_lstm = Bidirectional(LSTM(n_hidden))
 
 left_output = shared_lstm(encoded_left)
 right_output = shared_lstm(encoded_right)
