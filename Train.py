@@ -24,7 +24,7 @@ print(device_lib.list_local_devices())
 
 TRAIN_CSV = "dutch_data/dutch_formatted_as_csv.csv"
 EMBEDDING_FILE = 'wiki.nl/wiki.nl.vec'
-train_df = pd.read_csv(TRAIN_CSV)
+train_df = pd.read_csv(TRAIN_CSV, encoding = 'utf8')
 
 def substitute_thousands(text):
     matches = re.finditer(r'[0-9]+(?P<thousands>\s{0,2}k\b)', text, flags=re.I)
