@@ -4,6 +4,7 @@ import numpy as np
 from gensim.models import KeyedVectors
 import re
 from nltk.corpus import stopwords
+from nltk.stem.snowball import DutchStemmer
 import nltk
 from sklearn.model_selection import train_test_split
 
@@ -37,6 +38,8 @@ def substitute_thousands(text):
 
 
 nltk.download('stopwords')
+nltk.download('wordnet')
+
 print("begin sets")
 stops = set(stopwords.words('dutch'))
 print("end sets")
@@ -79,6 +82,9 @@ print("done loading word2vec")
 
 questions_cols = ['question1', 'question2']
 
+stemmer = DutchStemmer()
+
+
 # Iterate over the questions only of both training and test datasets
 for dataset in [train_df]:
     for index, row in dataset.iterrows():
@@ -88,7 +94,7 @@ for dataset in [train_df]:
 
             q2n = []  # q2n -> question numbers representation
             for word in text_to_word_list(row[question]):
-
+                word = stemmer.stem(word)
                 # Check for unwanted words
                 if word in stops and word not in word2vec.vocab:
                     continue
