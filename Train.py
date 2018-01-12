@@ -94,6 +94,7 @@ for dataset in [train_df]:
 
             q2n = []  # q2n -> question numbers representation
             for word in text_to_word_list(row[question]):
+                print(word)
                 word = stemmer.stem(word)
                 # Check for unwanted words
                 if word in stops and word not in word2vec.vocab:
