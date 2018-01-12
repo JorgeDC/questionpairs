@@ -66,7 +66,7 @@ def text_to_word_list(text):
     text = re.sub(r" 9 11 ", "911", text)
     text = re.sub(r"e - mail", "email", text)
 
-    text = text.split()
+    text = text.decode('utf-8').split()
 
     return text
 
